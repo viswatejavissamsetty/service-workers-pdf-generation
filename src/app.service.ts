@@ -23,7 +23,7 @@ export class AppService {
       size: 'A4',
       bufferPages: true,
       layout: 'portrait',
-      // userPassword: '123456',
+      userPassword: '1234',
     });
 
     doc.image(resolve(__dirname, 'assets/mainpage.jpg'), 0, 0, {
@@ -31,7 +31,25 @@ export class AppService {
       height: doc.page.height,
     });
 
-    doc.fontSize(32).text('hello world', 100, 150, {});
+    doc
+      .fontSize(32)
+      .fillColor('#ff0000')
+      .fillOpacity(0.9)
+      .text('hello world', 100, 150, {});
+
+    doc.addPage();
+
+    doc.image(resolve(__dirname, 'assets/otherpages.jpg'), 0, 0, {
+      width: doc.page.width,
+      height: doc.page.height,
+    });
+
+    doc.addPage();
+
+    doc.image(resolve(__dirname, 'assets/otherpages.jpg'), 0, 0, {
+      width: doc.page.width,
+      height: doc.page.height,
+    });
 
     doc.addPage();
 
